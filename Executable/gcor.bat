@@ -16,11 +16,15 @@ if "%1"=="" (
     )
 )
 
-echo Select a branch:
-for /l %%i in (1,1,%i%) do (
-    echo [%%i] !branch[%%i]!
+if %i%==1 (
+    git checkout !branch[1]!
+) else (
+    echo Select a branch:
+    for /l %%i in (1,1,%i%) do (
+        echo [%%i] !branch[%%i]!
+    )
+
+    set /p selection="Enter branch number: "
+
+    git checkout !branch[%selection%]!
 )
-
-set /p selection="Enter branch number: "
-
-git checkout !branch[%selection%]!
