@@ -1,2 +1,2 @@
 @echo off
-git add -p
+git add -p %*

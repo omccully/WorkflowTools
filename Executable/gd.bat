@@ -1,2 +1,2 @@
 @echo off
-git diff
+git diff %*

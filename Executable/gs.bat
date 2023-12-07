@@ -1,2 +1,2 @@
 @echo off
-git status
+git status %*
