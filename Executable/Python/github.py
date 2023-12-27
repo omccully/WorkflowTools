@@ -13,4 +13,6 @@ if url.endswith(".git"):
 if len(sys.argv) == 2 and sys.argv[1] == "actions":
     url += "/actions"
 
+print('Opening ' + url)
+
 webbrowser.open(url)
