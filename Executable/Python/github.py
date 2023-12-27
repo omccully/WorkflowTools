@@ -5,7 +5,7 @@ import subprocess
 
 url = subprocess.check_output(["git", "remote", "get-url", "origin"]).decode("utf-8").strip()
 
-url = re.sub(r'^ssh:\/\/git@(sshhub|github)\.com(:[\d]+)\/', 'https://github.com/', url)
+url = re.sub(r'^ssh:\/\/git@ssh\.(sshhub|github)\.com(:[\d]+)\/', 'https://github.com/', url)
 
 if url.endswith(".git"):
     url = url[:-4]
