@@ -10,8 +10,8 @@ url = re.sub(r'^ssh:\/\/git@ssh\.(sshhub|github)\.com(:[\d]+)\/', 'https://githu
 if url.endswith(".git"):
     url = url[:-4]
 
-if len(sys.argv) == 2 and sys.argv[1] == "actions":
-    url += "/actions"
+if len(sys.argv) == 2:
+    url += "/" + sys.argv[1]
 
 print('Opening ' + url)
 
