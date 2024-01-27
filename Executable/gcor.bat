@@ -1,30 +1,32 @@
 @echo off
-setlocal EnableDelayedExpansion
+py %~dp0\Python\gcor.py %*
 
 
-if "%1"=="" (
-   set i=0
-    for /f "tokens=* delims=" %%a in ('git branch --format "%%(refname:short)"') do (
-        set /a i+=1
-        set branch[!i!]=%%a
-    )
-) else (
-    set i=0
-    for /f "tokens=* delims=" %%a in ('git branch --format "%%(refname:short)" ^| find /i "%1"') do (
-        set /a i+=1
-        set branch[!i!]=%%a
-    )
-)
+@REM setlocal EnableDelayedExpansion
 
-if %i%==1 (
-    git checkout !branch[1]!
-) else (
-    echo Select a branch:
-    for /l %%i in (1,1,%i%) do (
-        echo [%%i] !branch[%%i]!
-    )
+@REM if "%1"=="" (
+@REM    set i=0
+@REM     for /f "tokens=* delims=" %%a in ('git branch --format "%%(refname:short)"') do (
+@REM         set /a i+=1
+@REM         set branch[!i!]=%%a
+@REM     )
+@REM ) else (
+@REM     set i=0
+@REM     for /f "tokens=* delims=" %%a in ('git branch --format "%%(refname:short)" ^| find /i "%1"') do (
+@REM         set /a i+=1
+@REM         set branch[!i!]=%%a
+@REM     )
+@REM )
 
-    set /p selection="Enter branch number: "
+@REM if %i%==1 (
+@REM     git checkout !branch[1]!
+@REM ) else (
+@REM     echo Select a branch:
+@REM     for /l %%i in (1,1,%i%) do (
+@REM         echo [%%i] !branch[%%i]!
+@REM     )
 
-    git checkout !branch[%selection%]!
-)
+@REM     set /p selection="Enter branch number: "
+
+@REM     git checkout !branch[!selection!]!
+@REM )
